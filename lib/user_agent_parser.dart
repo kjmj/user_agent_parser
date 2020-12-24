@@ -10,8 +10,10 @@ class Result {
 class Browser {
   String name;
   String version;
+  List<String> regexes; // TODO make this private
 
   Browser({this.name, this.version});
+  Browser.withRegex({this.name, this.regexes}); // TODO make this private
 
   @override
   bool operator ==(Object other) =>
@@ -39,19 +41,17 @@ class UserAgentParser {
   ///
   /// Returns `null` if no match.
   Browser parseBrowser(String userAgent) {
-    for (MapEntry mapEntry in _browsers.entries) {
-      String name = mapEntry.key;
-      List<String> regexes = mapEntry.value;
-
-      for (String regex in regexes) {
+    for (Browser browser in _browsers) {
+      for (String regex in browser.regexes) {
         RegExp regExp = new RegExp(regex, caseSensitive: false);
 
         if (regExp.hasMatch(userAgent)) {
-          final match = regExp.firstMatch(userAgent).group(0);
+          Iterable<RegExpMatch> matches = regExp.allMatches(userAgent);
+          String version = matches.first.namedGroup('version');
 
           return new Browser(
-            name: name,
-            version: match.split('/')[1],
+            name: browser.name,
+            version: version,
           );
         }
       }
@@ -60,19 +60,21 @@ class UserAgentParser {
     return null;
   }
 
-  /// Identifies the regexes for each browser.
+  /// Identifies the different browsers that can be parsed from a user agent string.
   ///
-  /// Key is the browser name.
-  ///    - ex. 'Chrome'
-  /// Value is a list of regex strings such that when matched with a user agent string,
-  /// it will return a match of the format `name/version`
-  ///    - ex. 'Chrome/87.0.4280.88'
+  /// Each regex guarantees the following:
+  ///    - A named group called "name" identifies the browser name.
+  ///    - A named group called "version" identifies the browser version.
   ///
   ///  TODO: Add support for Firefox, IE, Konqueror, Netscape, Opera, and Safari
-  final _browsers = <String, List<String>>{
-    'Chrome': [
-      r"chrome\/v?([\w\.]+)", // Chrome
-      r"((?:android.+)crmo|crios)\/([\w\.]+)", // Chrome for Android/iOS/iPad
-    ],
-  };
+  ///  TODO test that the "name" group is being parsed correctly
+  List<Browser> _browsers = [
+    Browser.withRegex(
+      name: 'Chrome',
+      regexes: [
+        r"(?<name>chrome)\/v?(?<version>[\w\.]+)", // Chrome
+        r"(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)", // Chrome for Android/iOS/iPad
+      ],
+    ),
+  ];
 }
