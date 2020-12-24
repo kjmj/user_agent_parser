@@ -10,10 +10,12 @@ class Result {
 class Browser {
   String name;
   String version;
-  List<String> regexes; // TODO make this private
+  List<String> _regexes;
 
   Browser({this.name, this.version});
-  Browser.withRegex({this.name, this.regexes}); // TODO make this private
+  Browser._withRegex({this.name, regexes}) {
+    this._regexes = regexes;
+  }
 
   @override
   bool operator ==(Object other) =>
@@ -42,7 +44,7 @@ class UserAgentParser {
   /// Returns `null` if no match.
   Browser parseBrowser(String userAgent) {
     for (Browser browser in _browsers) {
-      for (String regex in browser.regexes) {
+      for (String regex in browser._regexes) {
         RegExp regExp = new RegExp(regex, caseSensitive: false);
 
         if (regExp.hasMatch(userAgent)) {
@@ -69,7 +71,7 @@ class UserAgentParser {
   ///  TODO: Add support for Firefox, IE, Konqueror, Netscape, Opera, and Safari
   ///  TODO test that the "name" group is being parsed correctly
   List<Browser> _browsers = [
-    Browser.withRegex(
+    Browser._withRegex(
       name: 'Chrome',
       regexes: [
         r"(?<name>chrome)\/v?(?<version>[\w\.]+)", // Chrome
