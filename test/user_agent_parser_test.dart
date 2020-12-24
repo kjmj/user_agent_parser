@@ -90,4 +90,42 @@ void main() {
       expect(actual, expected);
     });
   });
+
+  group('safari browser on', () {
+    test('macOS', () {
+      final userAgent =
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Safari', version: '14.0.2');
+
+      expect(actual, expected);
+    });
+
+    test('iPhone', () {
+      final userAgent =
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Safari', version: '14.0');
+
+      expect(actual, expected);
+    });
+
+    test('iPad', () {
+      final userAgent =
+          'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Safari', version: '14.0');
+
+      expect(actual, expected);
+    });
+
+    test('iPod', () {
+      final userAgent =
+          'Mozilla/5.0 (iPod touch; CPU iPhone 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Safari', version: '14.0');
+
+      expect(actual, expected);
+    });
+  });
 }
