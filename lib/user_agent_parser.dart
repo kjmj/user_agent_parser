@@ -23,7 +23,8 @@ class Browser {
       other is Browser &&
           runtimeType == other.runtimeType &&
           name == other.name &&
-          version == other.version;
+          version == other.version &&
+          _regexes == other._regexes;
 
   @override
   int get hashCode => name.hashCode ^ version.hashCode;
