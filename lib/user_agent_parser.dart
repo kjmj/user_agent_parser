@@ -73,6 +73,17 @@ class UserAgentParser {
   ///  TODO: Test that the 'name' group is being parsed correctly
   List<Browser> _browsers = [
     Browser._withRegex(
+      name: 'Opera',
+      regexes: [
+        r'(?<name>opera\smini)\/(?<version>[\w\.-]+)', // Opera Mini
+        r'(?<name>opera\s[mobiletab]{3,6}).+version\/(?<version>[\w\.-]+)', // Opera Mobile/Tablet
+        r'(?<name>opera).+version\/(?<version>[\w\.]+)', // Opera > 9.80
+        r'(?<name>opera)[\/\s]+(?<version>[\w\.]+)', //Opera < 9.80
+        r'(?<name>opios)[\/\s]+(?<version>[\w\.]+)', // Opera Mini for iOS Webkit
+        r'\s(?<name>opr)\/(?<version>[\w\.]+)', // Opera Webkit
+      ],
+    ),
+    Browser._withRegex(
       name: 'Chrome',
       regexes: [
         r'(?<name>chrome)\/v?(?<version>[\w\.]+)', // Chrome

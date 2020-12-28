@@ -2,10 +2,103 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:user_agent_parser/user_agent_parser.dart';
 
+///  TODO: Test that the correct regex is being used and that they are all tested at some point
 void main() {
   var parser;
   setUp(() {
     parser = UserAgentParser();
+  });
+
+  group('opera browser', () {
+    test('windows', () {
+      final userAgent =
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 OPR/73.0.3856.284';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '73.0.3856.284');
+
+      expect(actual, expected);
+    });
+
+    test('macOS', () {
+      final userAgent =
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 OPR/73.0.3856.284';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '73.0.3856.284');
+
+      expect(actual, expected);
+    });
+
+    test('linux', () {
+      final userAgent =
+          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 OPR/73.0.3856.284';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '73.0.3856.284');
+
+      expect(actual, expected);
+    });
+
+    test('android (huawei)', () {
+      final userAgent =
+          'Mozilla/5.0 (Linux; Android 10; VOG-L29) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36 OPR/61.1.3076.56625';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '61.1.3076.56625');
+
+      expect(actual, expected);
+    });
+
+    test('android (samsung)', () {
+      final userAgent =
+          'Mozilla/5.0 (Linux; Android 10; SM-G970F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36 OPR/61.1.3076.56625';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '61.1.3076.56625');
+
+      expect(actual, expected);
+    });
+
+    test('windows version 7', () {
+      final userAgent =
+          'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1) Opera 7.54 [en]';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '7.54');
+
+      expect(actual, expected);
+    });
+
+    test('windows version 11', () {
+      final userAgent =
+          'Opera/9.80 (Windows NT 5.1; U; ru) Presto/2.9.168 Version/11.50';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '11.50');
+
+      expect(actual, expected);
+    });
+
+    test('opera mobile (presto rendering engine)', () {
+      final userAgent =
+          'Opera/9.80 (Android 4.1.2; Linux; Opera Mobi/ADR-1305251841) Presto/2.11.355 Version/12.10';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '12.10');
+
+      expect(actual, expected);
+    });
+
+    test('opera mini', () {
+      final userAgent =
+          'Opera/9.80 (J2ME/MIDP; Opera Mini/5.1.21214/28.2725; U; ru) Presto/2.8.119 Version/11.10';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '5.1.21214');
+
+      expect(actual, expected);
+    });
+
+    test('opera mini (iOS webkit)', () {
+      final userAgent =
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) OPiOS/10.2.0.93022 Mobile/11D257 Safari/9537.53';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Opera', version: '10.2.0.93022');
+
+      expect(actual, expected);
+    });
   });
 
   group('chrome browser on', () {
