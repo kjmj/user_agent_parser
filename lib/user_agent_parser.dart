@@ -11,9 +11,10 @@ class Browser {
   String name;
   String version;
   List<String> _regexes;
+  String parsedWithRegex;
 
-  Browser({this.name, this.version});
-  Browser._withRegex({this.name, regexes}) {
+  Browser({this.name, this.version, this.parsedWithRegex});
+  Browser._withRegexes({this.name, regexes}) {
     this._regexes = regexes;
   }
 
@@ -24,7 +25,8 @@ class Browser {
           runtimeType == other.runtimeType &&
           name == other.name &&
           version == other.version &&
-          _regexes == other._regexes;
+          _regexes == other._regexes &&
+          parsedWithRegex == other.parsedWithRegex;
 
   @override
   int get hashCode => name.hashCode ^ version.hashCode;
@@ -52,9 +54,10 @@ class UserAgentParser {
           Iterable<RegExpMatch> matches = regExp.allMatches(userAgent);
           String version = matches.first.namedGroup('version');
 
-          return new Browser(
+          return Browser(
             name: browser.name,
             version: version,
+            parsedWithRegex: regex,
           );
         }
       }
@@ -69,10 +72,10 @@ class UserAgentParser {
   ///    - A named group called 'name' identifies the browser name.
   ///    - A named group called 'version' identifies the browser version.
   ///
-  ///  TODO: Add support for IE, Konqueror, Netscape, and Opera
+  ///  TODO: Add support for IE, Konqueror, Netscape
   ///  TODO: Test that the 'name' group is being parsed correctly
   List<Browser> _browsers = [
-    Browser._withRegex(
+    Browser._withRegexes(
       name: 'Opera',
       regexes: [
         r'(?<name>opera\smini)\/(?<version>[\w\.-]+)', // Opera Mini
@@ -83,20 +86,20 @@ class UserAgentParser {
         r'\s(?<name>opr)\/(?<version>[\w\.]+)', // Opera Webkit
       ],
     ),
-    Browser._withRegex(
+    Browser._withRegexes(
       name: 'Chrome',
       regexes: [
         r'(?<name>chrome)\/v?(?<version>[\w\.]+)', // Chrome
         r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)', // Chrome for Android/iOS/iPad
       ],
     ),
-    Browser._withRegex(
+    Browser._withRegexes(
       name: 'Safari',
       regexes: [
         r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)', // Safari & Safari Mobile
       ],
     ),
-    Browser._withRegex(
+    Browser._withRegexes(
       name: 'Firefox',
       regexes: [
         r'fxios\/(?<version>[\w\.-]+)', // Firefox for iOS
