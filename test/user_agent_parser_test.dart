@@ -213,7 +213,7 @@ void main() {
     });
   });
 
-  group('chrome browser on', () {
+  group('chrome browser', () {
     test('windows', () {
       final userAgent =
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36';
@@ -345,7 +345,7 @@ void main() {
     });
   });
 
-  group('safari browser on', () {
+  group('safari browser', () {
     test('macOS', () {
       final userAgent =
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15';
@@ -403,7 +403,7 @@ void main() {
     });
   });
 
-  group('firefox browser on', () {
+  group('firefox browser', () {
     test('windows', () {
       final userAgent =
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0';
