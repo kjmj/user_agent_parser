@@ -8,10 +8,19 @@ class Result {
 }
 
 class Browser {
+  /// The browser name, set manually for a browser
   String name;
+
+  /// The browser name, parsed directly from the user agent string without modification
   String unformattedName;
+
+  /// The browser version
   String version;
+
+  /// The list of regexes that can possibly parse this browser
   List<String> _regexes;
+
+  /// The regex that was used to parse this browser
   String parsedWithRegex;
 
   Browser({
