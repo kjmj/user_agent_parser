@@ -141,6 +141,78 @@ void main() {
     });
   });
 
+  group('edge browser', () {
+    test('windows', () {
+      final userAgent =
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Edge',
+        version: '87.0.664.66',
+        parsedWithRegex:
+            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('macOS', () {
+      final userAgent =
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.60';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Edge',
+        version: '87.0.664.60',
+        parsedWithRegex:
+            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('iOS', () {
+      final userAgent =
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 EdgiOS/45.11.1 Mobile/15E148 Safari/605.1.15';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Edge',
+        version: '45.11.1',
+        parsedWithRegex:
+            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('android', () {
+      final userAgent =
+          'Mozilla/5.0 (Linux; Android 10; HD1913) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36 EdgA/45.11.2.5116';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Edge',
+        version: '45.11.2.5116',
+        parsedWithRegex:
+            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('windows 10 mobile', () {
+      final userAgent =
+          'Mozilla/5.0 (Windows Mobile 10; Android 10.0; Microsoft; Lumia 950XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Mobile Safari/537.36 Edge/40.15254.603';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Edge',
+        version: '40.15254.603',
+        parsedWithRegex:
+            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+  });
+
   group('chrome browser on', () {
     test('windows', () {
       final userAgent =

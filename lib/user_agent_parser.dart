@@ -87,6 +87,12 @@ class UserAgentParser {
       ],
     ),
     Browser._withRegexes(
+      name: "Edge",
+      regexes: [
+        r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)', // Edge
+      ],
+    ),
+    Browser._withRegexes(
       name: 'Chrome',
       regexes: [
         r'(?<name>chrome)\/v?(?<version>[\w\.]+)', // Chrome
