@@ -141,6 +141,47 @@ void main() {
     });
   });
 
+  group('konqueror browser', () {
+    test('windows', () {
+      final userAgent =
+          'Mozilla/5.0 (Windows; Windows i686) KHTML/4.10.2 (like Gecko) Konqueror/4.10';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Konqueror',
+        version: '4.10',
+        parsedWithRegex: r'(?<name>konqueror)\/(?<version>[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('linux', () {
+      final userAgent =
+          'Mozilla/5.0 (compatible; Konqueror/4.4; Linux) KHTML/4.4.5 (like Gecko) Kubuntu';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Konqueror',
+        version: '4.4',
+        parsedWithRegex: r'(?<name>konqueror)\/(?<version>[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('freeBSD', () {
+      final userAgent =
+          'Mozilla/5.0 (X11; FreeBSD) KHTML/4.9.1 (like Gecko) Konqueror/4.9';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Konqueror',
+        version: '4.9',
+        parsedWithRegex: r'(?<name>konqueror)\/(?<version>[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+  });
+
   group('ie browser', () {
     test('windows xp version 8', () {
       final userAgent =
