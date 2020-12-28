@@ -72,7 +72,6 @@ class UserAgentParser {
   ///    - A named group called 'name' identifies the browser name.
   ///    - A named group called 'version' identifies the browser version.
   ///
-  ///  TODO: Add support for Netscape
   ///  TODO: Test that the 'name' group is being parsed correctly
   List<Browser> _browsers = [
     Browser._withRegexes(
@@ -117,6 +116,12 @@ class UserAgentParser {
       name: 'Safari',
       regexes: [
         r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)', // Safari & Safari Mobile
+      ],
+    ),
+    Browser._withRegexes(
+      name: 'Netscape',
+      regexes: [
+        r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)', // Netscape
       ],
     ),
     Browser._withRegexes(

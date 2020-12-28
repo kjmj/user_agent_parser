@@ -499,6 +499,47 @@ void main() {
     });
   });
 
+  group('netscape browser', () {
+    test('windows', () {
+      final userAgent =
+          'Mozilla/5.0 (Windows; U; Win 9x 4.90; en-US; rv:1.4) Gecko/20030624 Netscape/7.1 (ax)';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Netscape',
+        version: '7.1',
+        parsedWithRegex: r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('linux', () {
+      final userAgent =
+          'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.12) Gecko/20080219 Firefox/2.0.0.12 Navigator/9.0.0.6';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Netscape',
+        version: '9.0.0.6',
+        parsedWithRegex: r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('macOS', () {
+      final userAgent =
+          'Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7.2) Gecko/20040804 Netscape/7.2';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Netscape',
+        version: '7.2',
+        parsedWithRegex: r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)',
+      );
+
+      expect(actual, expected);
+    });
+  });
+
   group('firefox browser', () {
     test('windows', () {
       final userAgent =
