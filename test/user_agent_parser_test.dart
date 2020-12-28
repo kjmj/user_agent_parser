@@ -128,4 +128,79 @@ void main() {
       expect(actual, expected);
     });
   });
+
+  group('firefox browser on', ()
+  {
+    test('windows', () {
+      final userAgent =
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '84.0');
+
+      expect(actual, expected);
+    });
+
+    test('macOS', () {
+      final userAgent =
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 11.1; rv:84.0) Gecko/20100101 Firefox/84.0';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '84.0');
+
+      expect(actual, expected);
+    });
+
+    test('linux', () {
+      final userAgent =
+          'Mozilla/5.0 (X11; Linux i686; rv:84.0) Gecko/20100101 Firefox/84.0';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '84.0');
+
+      expect(actual, expected);
+    });
+
+    test('iPhone', () {
+      final userAgent =
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 11_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/30.0 Mobile/15E148 Safari/605.1.15';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '30.0');
+
+      expect(actual, expected);
+    });
+
+    test('iPad', () {
+      final userAgent =
+          'Mozilla/5.0 (iPad; CPU OS 11_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/30.0 Mobile/15E148 Safari/605.1.15';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '30.0');
+
+      expect(actual, expected);
+    });
+
+    test('iPod', () {
+      final userAgent =
+          'Mozilla/5.0 (iPod touch; CPU iPhone OS 11_1 like Mac OS X) AppleWebKit/604.5.6 (KHTML, like Gecko) FxiOS/30.0 Mobile/15E148 Safari/605.1.15';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '30.0');
+
+      expect(actual, expected);
+    });
+
+    test('android standard', () {
+      final userAgent =
+          'Mozilla/5.0 (Android 11; Mobile; rv:68.0) Gecko/68.0 Firefox/84.0';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '84.0');
+
+      expect(actual, expected);
+    });
+
+    test('android lg', () {
+      final userAgent =
+          'Mozilla/5.0 (Android 11; Mobile; LG-M255; rv:84.0) Gecko/84.0 Firefox/84.0';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = new Browser(name: 'Firefox', version: '84.0');
+
+      expect(actual, expected);
+    });
+  });
 }

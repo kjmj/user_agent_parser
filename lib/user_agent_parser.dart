@@ -69,8 +69,8 @@ class UserAgentParser {
   ///    - A named group called 'name' identifies the browser name.
   ///    - A named group called 'version' identifies the browser version.
   ///
-  ///  TODO: Add support for Firefox, IE, Konqueror, Netscape, and Opera
-  ///  TODO test that the 'name' group is being parsed correctly
+  ///  TODO: Add support for IE, Konqueror, Netscape, and Opera
+  ///  TODO: Test that the 'name' group is being parsed correctly
   List<Browser> _browsers = [
     Browser._withRegex(
       name: 'Chrome',
@@ -83,6 +83,13 @@ class UserAgentParser {
       name: 'Safari',
       regexes: [
         r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)', // Safari & Safari Mobile
+      ],
+    ),
+    Browser._withRegex(
+      name: 'Firefox',
+      regexes: [
+        r'fxios\/(?<version>[\w\.-]+)', // Firefox for iOS
+        r'(?<name>firefox)\/(?<version>[\w\.-]+)$', // Firefox
       ],
     ),
   ];
