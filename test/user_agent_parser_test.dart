@@ -141,6 +141,61 @@ void main() {
     });
   });
 
+  group('ie browser', () {
+    test('windows xp version 8', () {
+      final userAgent =
+          'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'IE',
+        version: '8.0',
+        parsedWithRegex: r'(?:ms|\()(?<name>ie)\s(?<version>[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('windows 8 version 10', () {
+      final userAgent = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2)';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'IE',
+        version: '10.0',
+        parsedWithRegex: r'(?:ms|\()(?<name>ie)\s(?<version>[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('windows 10 version 11', () {
+      final userAgent =
+          'Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'IE',
+        version: '11.0',
+        parsedWithRegex:
+            r'(?<name>trident).+rv[:\s](?<version>[\w\.]{1,9}).+like\sgecko',
+      );
+
+      expect(actual, expected);
+    });
+
+    test('ie mobile', () {
+      final userAgent =
+          'Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; Microsoft; Lumia 950)';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'IE',
+        version: '10.0',
+        parsedWithRegex:
+            r'(?<name>iemobile)(?:browser)?[\/\s]?(?<version>[\w\.]*)',
+      );
+
+      expect(actual, expected);
+    });
+  });
+
   group('edge browser', () {
     test('windows', () {
       final userAgent =
