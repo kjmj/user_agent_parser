@@ -9,12 +9,22 @@ class Result {
 
 class Browser {
   String name;
+  String unformattedName;
   String version;
   List<String> _regexes;
   String parsedWithRegex;
 
-  Browser({this.name, this.version, this.parsedWithRegex});
-  Browser._withRegexes({this.name, regexes}) {
+  Browser({
+    this.name,
+    this.unformattedName,
+    this.version,
+    this.parsedWithRegex,
+  });
+
+  Browser._withRegexes({
+    this.name,
+    regexes,
+  }) {
     this._regexes = regexes;
   }
 
@@ -24,6 +34,7 @@ class Browser {
       other is Browser &&
           runtimeType == other.runtimeType &&
           name == other.name &&
+          unformattedName == other.unformattedName &&
           version == other.version &&
           _regexes == other._regexes &&
           parsedWithRegex == other.parsedWithRegex;
@@ -52,10 +63,12 @@ class UserAgentParser {
 
         if (regExp.hasMatch(userAgent)) {
           Iterable<RegExpMatch> matches = regExp.allMatches(userAgent);
+          String unformattedName = matches.first.namedGroup('unformattedName');
           String version = matches.first.namedGroup('version');
 
           return Browser(
             name: browser.name,
+            unformattedName: unformattedName,
             version: version,
             parsedWithRegex: regex,
           );
@@ -69,7 +82,7 @@ class UserAgentParser {
   /// Identifies the different browsers that can be parsed from a user agent string.
   ///
   /// Each regex guarantees the following:
-  ///    - A named group called 'name' identifies the browser name.
+  ///    - A named group called 'unformattedName' identifies the browser name.
   ///    - A named group called 'version' identifies the browser version.
   ///
   ///  TODO: Test that the 'name' group is being parsed correctly
@@ -77,58 +90,58 @@ class UserAgentParser {
     Browser._withRegexes(
       name: 'Opera',
       regexes: [
-        r'(?<name>opera\smini)\/(?<version>[\w\.-]+)', // Opera Mini
-        r'(?<name>opera\s[mobiletab]{3,6}).+version\/(?<version>[\w\.-]+)', // Opera Mobile/Tablet
-        r'(?<name>opera).+version\/(?<version>[\w\.]+)', // Opera > 9.80
-        r'(?<name>opera)[\/\s]+(?<version>[\w\.]+)', //Opera < 9.80
-        r'(?<name>opios)[\/\s]+(?<version>[\w\.]+)', // Opera Mini for iOS Webkit
-        r'\s(?<name>opr)\/(?<version>[\w\.]+)', // Opera Webkit
+        r'(?<unformattedName>opera\smini)\/(?<version>[\w\.-]+)', // Opera Mini
+        r'(?<unformattedName>opera\s[mobiletab]{3,6}).+version\/(?<version>[\w\.-]+)', // Opera Mobile/Tablet
+        r'(?<unformattedName>opera).+version\/(?<version>[\w\.]+)', // Opera > 9.80
+        r'(?<unformattedName>opera)[\/\s]+(?<version>[\w\.]+)', //Opera < 9.80
+        r'(?<unformattedName>opios)[\/\s]+(?<version>[\w\.]+)', // Opera Mini for iOS Webkit
+        r'\s(?<unformattedName>opr)\/(?<version>[\w\.]+)', // Opera Webkit
       ],
     ),
     Browser._withRegexes(
       name: "Konqueror",
       regexes: [
-        r'(?<name>konqueror)\/(?<version>[\w\.]+)', // Konqueror
+        r'(?<unformattedName>konqueror)\/(?<version>[\w\.]+)', // Konqueror
       ],
     ),
     Browser._withRegexes(
       name: "IE",
       regexes: [
-        r'(?<name>iemobile)(?:browser)?[\/\s]?(?<version>[\w\.]*)', // IEMobile
-        r'(?:ms|\()(?<name>ie)\s(?<version>[\w\.]+)', // Internet Explorer
-        r'(?<name>trident).+rv[:\s](?<version>[\w\.]{1,9}).+like\sgecko', // IE11
+        r'(?<unformattedName>iemobile)(?:browser)?[\/\s]?(?<version>[\w\.]*)', // IEMobile
+        r'(?:ms|\()(?<unformattedName>ie)\s(?<version>[\w\.]+)', // Internet Explorer
+        r'(?<unformattedName>trident).+rv[:\s](?<version>[\w\.]{1,9}).+like\sgecko', // IE11
       ],
     ),
     Browser._withRegexes(
       name: "Edge",
       regexes: [
-        r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)', // Edge
+        r'(?<unformattedName>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)', // Edge
       ],
     ),
     Browser._withRegexes(
       name: 'Chrome',
       regexes: [
-        r'(?<name>chrome)\/v?(?<version>[\w\.]+)', // Chrome
-        r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)', // Chrome for iOS/iPad/Some Android
+        r'(?<unformattedName>chrome)\/v?(?<version>[\w\.]+)', // Chrome
+        r'(?<unformattedName>crmo|crios)\/(?<version>[\w\.]+)', // Chrome for iOS/iPad/Some Android
       ],
     ),
     Browser._withRegexes(
       name: 'Safari',
       regexes: [
-        r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)', // Safari & Safari Mobile
+        r'version\/(?<version>[\w\.]+)\s.*(?<unformattedName>mobile\s?safari|safari)', // Safari & Safari Mobile
       ],
     ),
     Browser._withRegexes(
       name: 'Netscape',
       regexes: [
-        r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)', // Netscape
+        r'(?<unformattedName>navigator|netscape)\/(?<version>[\w\.-]+)', // Netscape
       ],
     ),
     Browser._withRegexes(
       name: 'Firefox',
       regexes: [
-        r'fxios\/(?<version>[\w\.-]+)', // Firefox for iOS
-        r'(?<name>firefox)\/(?<version>[\w\.-]+)$', // Firefox
+        r'(?<unformattedName>fxios)\/(?<version>[\w\.-]+)', // Firefox for iOS
+        r'(?<unformattedName>firefox)\/(?<version>[\w\.-]+)$', // Firefox
       ],
     ),
   ];

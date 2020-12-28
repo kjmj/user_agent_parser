@@ -15,8 +15,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'OPR',
         version: '73.0.3856.284',
-        parsedWithRegex: r'\s(?<name>opr)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'\s(?<unformattedName>opr)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -28,8 +29,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'OPR',
         version: '73.0.3856.284',
-        parsedWithRegex: r'\s(?<name>opr)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'\s(?<unformattedName>opr)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -41,8 +43,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'OPR',
         version: '73.0.3856.284',
-        parsedWithRegex: r'\s(?<name>opr)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'\s(?<unformattedName>opr)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -54,8 +57,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'OPR',
         version: '61.1.3076.56625',
-        parsedWithRegex: r'\s(?<name>opr)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'\s(?<unformattedName>opr)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -67,8 +71,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'OPR',
         version: '61.1.3076.56625',
-        parsedWithRegex: r'\s(?<name>opr)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'\s(?<unformattedName>opr)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -80,8 +85,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'Opera',
         version: '7.54',
-        parsedWithRegex: r'(?<name>opera)[\/\s]+(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>opera)[\/\s]+(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -93,8 +99,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'Opera',
         version: '11.50',
-        parsedWithRegex: r'(?<name>opera).+version\/(?<version>[\w\.]+)',
+        parsedWithRegex:
+            r'(?<unformattedName>opera).+version\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -106,9 +114,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'Opera Mobi',
         version: '12.10',
         parsedWithRegex:
-            r'(?<name>opera\s[mobiletab]{3,6}).+version\/(?<version>[\w\.-]+)',
+            r'(?<unformattedName>opera\s[mobiletab]{3,6}).+version\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -120,8 +129,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'Opera Mini',
         version: '5.1.21214',
-        parsedWithRegex: r'(?<name>opera\smini)\/(?<version>[\w\.-]+)',
+        parsedWithRegex:
+            r'(?<unformattedName>opera\smini)\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -133,8 +144,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Opera',
+        unformattedName: 'OPiOS',
         version: '10.2.0.93022',
-        parsedWithRegex: r'(?<name>opios)[\/\s]+(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>opios)[\/\s]+(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -148,8 +160,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Konqueror',
+        unformattedName: 'Konqueror',
         version: '4.10',
-        parsedWithRegex: r'(?<name>konqueror)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>konqueror)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -161,8 +174,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Konqueror',
+        unformattedName: 'Konqueror',
         version: '4.4',
-        parsedWithRegex: r'(?<name>konqueror)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>konqueror)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -174,8 +188,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Konqueror',
+        unformattedName: 'Konqueror',
         version: '4.9',
-        parsedWithRegex: r'(?<name>konqueror)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>konqueror)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -189,8 +204,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'IE',
+        unformattedName: 'IE',
         version: '8.0',
-        parsedWithRegex: r'(?:ms|\()(?<name>ie)\s(?<version>[\w\.]+)',
+        parsedWithRegex:
+            r'(?:ms|\()(?<unformattedName>ie)\s(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -201,8 +218,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'IE',
+        unformattedName: 'IE',
         version: '10.0',
-        parsedWithRegex: r'(?:ms|\()(?<name>ie)\s(?<version>[\w\.]+)',
+        parsedWithRegex:
+            r'(?:ms|\()(?<unformattedName>ie)\s(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -214,9 +233,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'IE',
+        unformattedName: 'Trident',
         version: '11.0',
         parsedWithRegex:
-            r'(?<name>trident).+rv[:\s](?<version>[\w\.]{1,9}).+like\sgecko',
+            r'(?<unformattedName>trident).+rv[:\s](?<version>[\w\.]{1,9}).+like\sgecko',
       );
 
       expect(actual, expected);
@@ -228,9 +248,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'IE',
+        unformattedName: 'IEMobile',
         version: '10.0',
         parsedWithRegex:
-            r'(?<name>iemobile)(?:browser)?[\/\s]?(?<version>[\w\.]*)',
+            r'(?<unformattedName>iemobile)(?:browser)?[\/\s]?(?<version>[\w\.]*)',
       );
 
       expect(actual, expected);
@@ -244,9 +265,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Edge',
+        unformattedName: 'Edg',
         version: '87.0.664.66',
         parsedWithRegex:
-            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+            r'(?<unformattedName>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -258,9 +280,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Edge',
+        unformattedName: 'Edg',
         version: '87.0.664.60',
         parsedWithRegex:
-            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+            r'(?<unformattedName>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -272,9 +295,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Edge',
+        unformattedName: 'EdgiOS',
         version: '45.11.1',
         parsedWithRegex:
-            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+            r'(?<unformattedName>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -286,9 +310,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Edge',
+        unformattedName: 'EdgA',
         version: '45.11.2.5116',
         parsedWithRegex:
-            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+            r'(?<unformattedName>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -300,9 +325,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Edge',
+        unformattedName: 'Edge',
         version: '40.15254.603',
         parsedWithRegex:
-            r'(?<name>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
+            r'(?<unformattedName>edge|edgios|edga|edg)\/(?<version>(\d+)?[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -316,8 +342,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'Chrome',
         version: '87.0.4280.88',
-        parsedWithRegex: r'(?<name>chrome)\/v?(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>chrome)\/v?(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -329,8 +356,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'Chrome',
         version: '87.0.4280.88',
-        parsedWithRegex: r'(?<name>chrome)\/v?(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>chrome)\/v?(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -342,8 +370,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'Chrome',
         version: '87.0.4280.88',
-        parsedWithRegex: r'(?<name>chrome)\/v?(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>chrome)\/v?(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -355,8 +384,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'CriOS',
         version: '87.0.4280.77',
-        parsedWithRegex: r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>crmo|crios)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -368,8 +398,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'CriOS',
         version: '87.0.4280.77',
-        parsedWithRegex: r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>crmo|crios)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -381,8 +412,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'CriOS',
         version: '87.0.4280.77',
-        parsedWithRegex: r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>crmo|crios)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -394,8 +426,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'Chrome',
         version: '87.0.4280.101',
-        parsedWithRegex: r'(?<name>chrome)\/v?(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>chrome)\/v?(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -407,8 +440,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'Chrome',
         version: '87.0.4280.101',
-        parsedWithRegex: r'(?<name>chrome)\/v?(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>chrome)\/v?(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -420,8 +454,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'Chrome',
         version: '87.0.4280.101',
-        parsedWithRegex: r'(?<name>chrome)\/v?(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>chrome)\/v?(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -433,8 +468,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Chrome',
+        unformattedName: 'CrMo',
         version: '16.0.912.75',
-        parsedWithRegex: r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)',
+        parsedWithRegex: r'(?<unformattedName>crmo|crios)\/(?<version>[\w\.]+)',
       );
 
       expect(actual, expected);
@@ -448,9 +484,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Safari',
+        unformattedName: 'Safari',
         version: '14.0.2',
         parsedWithRegex:
-            r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)',
+            r'version\/(?<version>[\w\.]+)\s.*(?<unformattedName>mobile\s?safari|safari)',
       );
 
       expect(actual, expected);
@@ -462,9 +499,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Safari',
+        unformattedName: 'Safari',
         version: '14.0',
         parsedWithRegex:
-            r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)',
+            r'version\/(?<version>[\w\.]+)\s.*(?<unformattedName>mobile\s?safari|safari)',
       );
 
       expect(actual, expected);
@@ -476,9 +514,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Safari',
+        unformattedName: 'Safari',
         version: '14.0',
         parsedWithRegex:
-            r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)',
+            r'version\/(?<version>[\w\.]+)\s.*(?<unformattedName>mobile\s?safari|safari)',
       );
 
       expect(actual, expected);
@@ -490,9 +529,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Safari',
+        unformattedName: 'Safari',
         version: '14.0',
         parsedWithRegex:
-            r'version\/(?<version>[\w\.]+)\s.*(?<name>mobile\s?safari|safari)',
+            r'version\/(?<version>[\w\.]+)\s.*(?<unformattedName>mobile\s?safari|safari)',
       );
 
       expect(actual, expected);
@@ -506,8 +546,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Netscape',
+        unformattedName: 'Netscape',
         version: '7.1',
-        parsedWithRegex: r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)',
+        parsedWithRegex:
+            r'(?<unformattedName>navigator|netscape)\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -519,8 +561,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Netscape',
+        unformattedName: 'Navigator',
         version: '9.0.0.6',
-        parsedWithRegex: r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)',
+        parsedWithRegex:
+            r'(?<unformattedName>navigator|netscape)\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -532,8 +576,10 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Netscape',
+        unformattedName: 'Netscape',
         version: '7.2',
-        parsedWithRegex: r'(?<name>navigator|netscape)\/(?<version>[\w\.-]+)',
+        parsedWithRegex:
+            r'(?<unformattedName>navigator|netscape)\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -547,8 +593,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'Firefox',
         version: '84.0',
-        parsedWithRegex: r'(?<name>firefox)\/(?<version>[\w\.-]+)$',
+        parsedWithRegex: r'(?<unformattedName>firefox)\/(?<version>[\w\.-]+)$',
       );
 
       expect(actual, expected);
@@ -560,8 +607,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'Firefox',
         version: '84.0',
-        parsedWithRegex: r'(?<name>firefox)\/(?<version>[\w\.-]+)$',
+        parsedWithRegex: r'(?<unformattedName>firefox)\/(?<version>[\w\.-]+)$',
       );
 
       expect(actual, expected);
@@ -573,8 +621,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'Firefox',
         version: '84.0',
-        parsedWithRegex: r'(?<name>firefox)\/(?<version>[\w\.-]+)$',
+        parsedWithRegex: r'(?<unformattedName>firefox)\/(?<version>[\w\.-]+)$',
       );
 
       expect(actual, expected);
@@ -586,8 +635,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'FxiOS',
         version: '30.0',
-        parsedWithRegex: r'fxios\/(?<version>[\w\.-]+)',
+        parsedWithRegex: r'(?<unformattedName>fxios)\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -599,8 +649,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'FxiOS',
         version: '30.0',
-        parsedWithRegex: r'fxios\/(?<version>[\w\.-]+)',
+        parsedWithRegex: r'(?<unformattedName>fxios)\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -612,8 +663,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'FxiOS',
         version: '30.0',
-        parsedWithRegex: r'fxios\/(?<version>[\w\.-]+)',
+        parsedWithRegex: r'(?<unformattedName>fxios)\/(?<version>[\w\.-]+)',
       );
 
       expect(actual, expected);
@@ -625,8 +677,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'Firefox',
         version: '84.0',
-        parsedWithRegex: r'(?<name>firefox)\/(?<version>[\w\.-]+)$',
+        parsedWithRegex: r'(?<unformattedName>firefox)\/(?<version>[\w\.-]+)$',
       );
 
       expect(actual, expected);
@@ -638,8 +691,9 @@ void main() {
       final actual = parser.parseBrowser(userAgent);
       final expected = Browser(
         name: 'Firefox',
+        unformattedName: 'Firefox',
         version: '84.0',
-        parsedWithRegex: r'(?<name>firefox)\/(?<version>[\w\.-]+)$',
+        parsedWithRegex: r'(?<unformattedName>firefox)\/(?<version>[\w\.-]+)$',
       );
 
       expect(actual, expected);
