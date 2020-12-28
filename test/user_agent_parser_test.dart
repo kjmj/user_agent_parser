@@ -258,6 +258,19 @@ void main() {
 
       expect(actual, expected);
     });
+
+    test('chrome 16 on android', () {
+      final userAgent =
+          'Mozilla/5.0 (Linux; U; Android-4.0.3; en-us; Xoom Build/IML77) AppleWebKit/535.7 (KHTML, like Gecko) CrMo/16.0.912.75 Safari/535.7';
+      final actual = parser.parseBrowser(userAgent);
+      final expected = Browser(
+        name: 'Chrome',
+        version: '16.0.912.75',
+        parsedWithRegex: r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)',
+      );
+
+      expect(actual, expected);
+    });
   });
 
   group('safari browser on', () {

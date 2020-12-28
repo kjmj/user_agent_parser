@@ -90,7 +90,7 @@ class UserAgentParser {
       name: 'Chrome',
       regexes: [
         r'(?<name>chrome)\/v?(?<version>[\w\.]+)', // Chrome
-        r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)', // Chrome for Android/iOS/iPad
+        r'(?<name>android.+crmo|crios)\/(?<version>[\w\.]+)', // Chrome for iOS/iPad/Some Android
       ],
     ),
     Browser._withRegexes(
