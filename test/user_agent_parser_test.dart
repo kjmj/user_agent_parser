@@ -63,7 +63,7 @@ void main() {
       expect(actual, expected);
     });
 
-    test('android standard', () {
+    test('android (standard)', () {
       final userAgent =
           'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36';
       final actual = parser.parseBrowser(userAgent);
@@ -72,7 +72,7 @@ void main() {
       expect(actual, expected);
     });
 
-    test('android samsung', () {
+    test('android (samsung)', () {
       final userAgent =
           'Mozilla/5.0 (Linux; Android 10; SM-A205U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36';
       final actual = parser.parseBrowser(userAgent);
@@ -81,7 +81,7 @@ void main() {
       expect(actual, expected);
     });
 
-    test('android lg', () {
+    test('android (lg)', () {
       final userAgent =
           'Mozilla/5.0 (Linux; Android 10; LM-Q720) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36';
       final actual = parser.parseBrowser(userAgent);
@@ -129,8 +129,7 @@ void main() {
     });
   });
 
-  group('firefox browser on', ()
-  {
+  group('firefox browser on', () {
     test('windows', () {
       final userAgent =
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0';
@@ -185,7 +184,7 @@ void main() {
       expect(actual, expected);
     });
 
-    test('android standard', () {
+    test('android (standard)', () {
       final userAgent =
           'Mozilla/5.0 (Android 11; Mobile; rv:68.0) Gecko/68.0 Firefox/84.0';
       final actual = parser.parseBrowser(userAgent);
@@ -194,7 +193,7 @@ void main() {
       expect(actual, expected);
     });
 
-    test('android lg', () {
+    test('android (lg)', () {
       final userAgent =
           'Mozilla/5.0 (Android 11; Mobile; LG-M255; rv:84.0) Gecko/84.0 Firefox/84.0';
       final actual = parser.parseBrowser(userAgent);
