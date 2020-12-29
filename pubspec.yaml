@@ -1,8 +1,7 @@
 name: user_agent_parser
-description: A new Flutter package project.
+description: A Dart-based User-Agent string parser. This package aims to identify the type of web browser entirely from a User-Agent string.
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/kjmj/user_agent_parser
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
