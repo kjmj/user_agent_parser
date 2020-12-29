@@ -93,8 +93,6 @@ class UserAgentParser {
   /// Each regex guarantees the following:
   ///    - A named group called 'unformattedName' identifies the browser name.
   ///    - A named group called 'version' identifies the browser version.
-  ///
-  ///  TODO: Test that the 'name' group is being parsed correctly
   List<Browser> _browsers = [
     Browser._withRegexes(
       name: 'Opera',
