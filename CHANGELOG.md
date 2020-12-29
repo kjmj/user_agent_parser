@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 12/28/2020
 
-* TODO: Describe initial release.
+* Initial Release with support for parsing the following browsers: Opera, Konqueror, IE, Edge, Chrome, Safari, Netscape, and Firefox
