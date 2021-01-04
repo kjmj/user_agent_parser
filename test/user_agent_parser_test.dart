@@ -8,6 +8,14 @@ void main() {
     parser = UserAgentParser();
   });
 
+  test('parseBrowser returns null when no match is found', () {
+    final userAgent = 'user agent string with no match';
+    final actual = parser.parseBrowser(userAgent);
+    final expected = null;
+
+    expect(actual, expected);
+  });
+
   group('opera browser', () {
     test('windows', () {
       final userAgent =
